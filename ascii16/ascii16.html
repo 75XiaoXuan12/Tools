@@ -1,49 +1,56 @@
-<script type="text/javascript">
-  function JavaDe(){
-    var txt=document.getElementById("code");
-    var monyer = new Array();
-    var s = document.getElementById('code').value.split("\\");
-    for (i = 1; i < s.length; i++){
-      s[i] = s[i].replace('x', '');
-      monyer += String.fromCharCode(parseInt(s[i], 16))
+<html>
+<head>
+  <title>Ascii16 encryption/decrypted</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function JavaDe(){
+      var txt=document.getElementById("code");
+      var monyer = new Array();
+      var s = document.getElementById('code').value.split("\\");
+      for (i = 1; i < s.length; i++){
+        s[i] = s[i].replace('x', '');
+        monyer += String.fromCharCode(parseInt(s[i], 16))
+      }
+      if (monyer == "") {
+        window.alert("无法解密，请检查输入文本内容格式");
+      } else {
+        txt.value = monyer;
+      }
     }
-    if (monyer == "") {
-      window.alert("无法解密，请检查输入文本内容格式");
-    } else {
-      txt.value = monyer;
-    }
-  }
 
-  function JavaEn(){
-    var txt=document.getElementById("code");
-    var hex=document.getElementById("true");
-    var monyer = new Array();var i,s;
-    for(i=0;i<txt.value.length;i++){
-       s=txt.value.charCodeAt(i).toString(16);
-       if(hex.checked){
-           monyer+="\\x"+s;
-       }else{
-           monyer+=new Array(5-String(s).length).join("0")+s;
-       }
+    function JavaEn(){
+      var txt=document.getElementById("code");
+      var hex=document.getElementById("true");
+      var monyer = new Array();var i,s;
+      for(i=0;i<txt.value.length;i++){
+         s=txt.value.charCodeAt(i).toString(16);
+         if(hex.checked){
+             monyer+="\\x"+s;
+         }else{
+             monyer+=new Array(5-String(s).length).join("0")+s;
+         }
+      }
+      if (monyer == "") {
+        window.alert("请输入文本来进行加密");
+      } else {
+        txt.value=monyer;
+      }
     }
-    if (monyer == "") {
-      window.alert("请输入文本来进行加密");
-    } else {
-      txt.value=monyer;
-    }
-  }
 
-  function Reset(){
-    var txt=document.getElementById("code");
-    txt.value="";
-  }
-</script>
-<div>
-  <textarea id="code" rows="20" cols="50" placeholder="请输入需要加密/解密的内容&#10[例]解密内容: \x65\x76\x61\x6c"></textarea>
-</div>
-<div>
-  <input type="checkbox" checked id="true" >是否启用\x加密<br/>
-  <input onClick="JavaDe()" type="button" value='16进制解密"\x"'>
-  <input onClick="JavaEn()" type="button" value='16进制加密'>
-  <input onClick="Reset()" type="button" value="重置">
-</div>
+    function Reset(){
+      var txt=document.getElementById("code");
+      txt.value="";
+    }
+  </script>
+  <div>
+    <textarea id="code" rows="20" cols="50" placeholder="请输入需要加密/解密的内容&#10[例]解密内容: \x65\x76\x61\x6c"></textarea>
+  </div>
+  <div>
+    <input type="checkbox" checked id="true" >是否启用\x加密<br/>
+    <input onClick="JavaDe()" type="button" value='16进制解密"\x"'>
+    <input onClick="JavaEn()" type="button" value='16进制加密'>
+    <input onClick="Reset()" type="button" value="重置">
+  </div>
+</body>
+</html>
