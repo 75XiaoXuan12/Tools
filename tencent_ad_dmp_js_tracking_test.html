@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Tencent DMP JS code test</title>
+		<script>
+			!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv='1.0';v.bt=0;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,'script','//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+			gdt('init','1106093327');
+			gdt('track','PAGE_VIEW');
+		</script>
+		<noscript>
+			<img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1106093327&action_type=PAGE_VIEW&noscript=1"/>
+		</noscript>
+	</head>
+	<body>
+		<div id="div1">
+			<span>Tencent DMP JS code test page</br></br></span>
+			<span>
+			1. 在网站头部添加【基础代码】</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;(1)&nbsp;您必须将基础代码部署在所有页面，这样可以通过URL方式提取所有访客</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;(2)&nbsp;将基础代码部署在网站头部，即&#60;head&#62;&#60;/head&#62;标签之内相对靠前的位置，切勿修改代码</br></br>
+			</span>
+			
+			<span>
+			2. 在特定页面添加【行为代码】</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;在特定页面添加不同的行为代码收集不同的行为数据和参数，这样可以通过行为方式提取人群</br></br>
+			</span>	
+			<button type="button" onclick="postbackReservation()">点击触发上报Reservation行为</button>
+			<script>
+				function postbackReservation(){
+					gdt('track', 'RESERVATION', {'key1': 'value1', 'key2': 'value2'});
+					alert('上报Reservation行为成功');
+				}
+			</script>
+		</div>
+	</body>
+</html>
